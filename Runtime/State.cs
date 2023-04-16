@@ -16,9 +16,9 @@ public abstract class State : ScriptableObject
         }
     }
 
-    public virtual void Enter(){}
-    public virtual void Exit(){}
-    public abstract void Run();
+    public virtual void Enter(GameObject owner){}
+    public virtual void Exit(GameObject owner){}
+    public abstract void Run(GameObject owner);
     
 }
 }
