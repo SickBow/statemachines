@@ -10,12 +10,18 @@ public class FSMRunner : MonoBehaviour
     
     List<State> states;
     [SerializeField] State currentState;
+    [SerializeField] GameObject owner;
 
-    void OnValidate() => states = stateMachine.GetStates();
+    void OnValidate(){
+        if (states != null)
+            states = stateMachine.GetStates();
+    }
     void Awake(){
         if (currentState == null && states.Count > 0){
             currentState = states[0];
         }
+        if (owner == null)
+            owner = gameObject;
     }
 
     void Update()
@@ -23,13 +29,13 @@ public class FSMRunner : MonoBehaviour
         State nextState = GetNextState();
 
         if (nextState != currentState){
-            currentState.Exit();
-            nextState.Enter();
+            currentState.Exit(owner);
+            nextState.Enter(owner);
 
             currentState = nextState;
         }
 
-        currentState.Run();
+        currentState.Run(owner);
     }
 
     private State GetNextState()
