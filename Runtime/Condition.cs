@@ -9,6 +9,7 @@ namespace Sickbow.StateMachines {
 public class Condition 
 {
     [SerializeField] string name;
+    [SerializeField] bool invert;
     [SerializeField] bool isSatisfied;
     [SerializeField] List<ConditionValue> conditionValues;
     
@@ -20,12 +21,12 @@ public class Condition
 
         foreach(ConditionValue cv in conditionValues){
             if (cv.value == false){
-                isSatisfied = false;
-                return false;
+                isSatisfied = invert? true : false;
+                return invert? true : false;
             }
         }
-        isSatisfied = true;
-        return true;
+        isSatisfied = invert? false : true;
+        return invert? false : true;
     }
 }
 }
