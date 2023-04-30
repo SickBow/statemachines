@@ -8,8 +8,8 @@ public class FSMRunner : MonoBehaviour
 
     [SerializeField] FSM stateMachine;
     
-    [SerializeField] List<State> states;
-    [SerializeField] List<ConditionValue> conditionValues;
+    [SerializeField, HideInInspector] List<State> states;
+    [SerializeField, HideInInspector] List<ConditionValue> conditionValues;
     [SerializeField] State currentState;
     [SerializeField] GameObject owner;
     
