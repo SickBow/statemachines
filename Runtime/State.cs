@@ -9,6 +9,7 @@ public abstract class State : ScriptableObject
 {
     [SerializeField] List<Transition> transitions;
     public List<Transition> GetTransitions() => transitions;
+    public void SetTransitions(List<Transition> transitions) => this.transitions = transitions;
 
     void OnValidate(){
         foreach(Transition tran in transitions){
