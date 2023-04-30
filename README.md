@@ -25,6 +25,6 @@ in the middle, you name the condition for this transition
 This condtion evaluates to true only when every 'condition value' evaluates to true at the same time
 These are added by clicking the plus button
 
-## Creating Condtion Values
-These are created from the create asset menu and are simply scriptable objects with a single bool 'value' that
-can be placed and updated from wherever you desire in your custom game scripts
+## Creating Condition Values
+These are created from the create asset menu and are simply scriptable objects with a single bool 'value'. add references to all used
+ConditionValues inside of the FSM ScriptableObject "conditionValues" list for everything to work properly
