@@ -18,5 +18,10 @@ public class Transition
     [SerializeField] State to;
 
     public State GetTo() => to;
+
+    public void Init(State to, Condition condition){
+        this.to = to;
+        this.condition = condition;
+    }
 }
 }
