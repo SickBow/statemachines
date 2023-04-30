@@ -26,5 +26,7 @@ This condtion evaluates to true only when every 'condition value' evaluates to t
 These are added by clicking the plus button
 
 ## Creating Condition Values
-These are created from the create asset menu and are simply scriptable objects with a single bool 'value'. add references to all used
+These are created from the create asset menu and are simply scriptable objects with a single bool 'value'.
+Change these values at runtime by FSMRunner.SetConditionValue(string : name, bool : value) or
+bool FSMRunner.GetConditionValue(string : name). Add references to all used
 ConditionValues inside of the FSM ScriptableObject "conditionValues" list for everything to work properly
