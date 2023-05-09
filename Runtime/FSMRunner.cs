@@ -14,7 +14,11 @@ public class FSMRunner : MonoBehaviour
     [SerializeField] GameObject owner;
     
     private Dictionary<string,ConditionValue> _valuePairs = new Dictionary<string, ConditionValue>();
+    private State lastState;
 
+    public State GetCurrentState() => currentState;
+    public State GetLastState() => (lastState != null)? lastState : currentState;
+    
     private void InitConditionValuePairs(){
         foreach(ConditionValue cv in conditionValues)
             _valuePairs.Add(cv.name, cv);
@@ -102,7 +106,8 @@ public class FSMRunner : MonoBehaviour
         if (nextState != currentState){
             currentState.Exit(owner);
             nextState.Enter(owner);
-
+            
+            lastState = currentState;
             currentState = nextState;
         }
 
