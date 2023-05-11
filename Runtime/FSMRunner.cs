@@ -15,9 +15,11 @@ public class FSMRunner : MonoBehaviour
     
     private Dictionary<string,ConditionValue> _valuePairs = new Dictionary<string, ConditionValue>();
     private State _lastState;
+    private State _nextState;
 
     public State GetCurrentState() => currentState;
     public State GetLastState() => (_lastState != null)? _lastState : currentState;
+    public State GetNextState() => (_nextState != null)? _nextState : currentState;
     
     private void InitConditionValuePairs(){
         foreach(ConditionValue cv in conditionValues)
@@ -101,7 +103,7 @@ public class FSMRunner : MonoBehaviour
 
     void Update()
     {
-        State nextState = GetNextState();
+        State nextState = _nextState = NextState();
 
         if (nextState != currentState){
             currentState.Exit(owner);
@@ -114,7 +116,7 @@ public class FSMRunner : MonoBehaviour
         currentState.Run(owner);
     }
 
-    private State GetNextState()
+    private State NextState()
     {
         foreach (Transition transition in currentState.GetTransitions())
         {
