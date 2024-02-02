@@ -20,6 +20,10 @@ public abstract class State : ScriptableObject
     public virtual void Enter(GameObject owner){}
     public virtual void Exit(GameObject owner){}
     public abstract void Run(GameObject owner);
-    
+    public virtual State Clone() { 
+        var clone = (State)ScriptableObject.CreateInstance(this.GetType());
+        clone.name = this.name;
+        return clone;
+    }
 }
 }
