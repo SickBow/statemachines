@@ -81,7 +81,7 @@ public class FSMRunner : MonoBehaviour
         List<State> instancedStates = new List<State>(templateStates.Count);
         
         for ( int i = 0; i < templateStates.Count; i++){
-            var stateInstance = ScriptableObject.CreateInstance(templateStates[i].GetType());
+            var stateInstance = templateStates[i].Clone();
             instancedStates.Insert(i,(State)stateInstance);
         }
         states = instancedStates;
