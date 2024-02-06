@@ -115,7 +115,13 @@ public class FSMRunner : MonoBehaviour
 
         currentState.Run(owner);
     }
-
+    
+    void FixedUpdate()
+    {
+        if (currentState == null) return;
+        currentState.RunFixedUpdate(owner);
+    }
+    
     private State NextState()
     {
         foreach (Transition transition in currentState.GetTransitions())
