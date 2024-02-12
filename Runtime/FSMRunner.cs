@@ -20,6 +20,15 @@ public class FSMRunner : MonoBehaviour
     public State GetCurrentState() => currentState;
     public State GetLastState() => (_lastState != null)? _lastState : currentState;
     public State GetNextState() => (_nextState != null)? _nextState : currentState;
+    public T GetState<T>() where T : State
+    {
+        foreach (var state in states)
+        {
+            if (state is T)
+                return state as T;
+        }
+        return null;
+    }
     
     private void InitConditionValuePairs(){
         foreach(ConditionValue cv in conditionValues)
