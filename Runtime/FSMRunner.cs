@@ -103,11 +103,12 @@ public class FSMRunner : MonoBehaviour
     void Awake(){
         CloneMachine();
         InitConditionValuePairs();
-        if (states.Count > 0){
-            currentState = states[0];
-        }
         if (owner == null)
             owner = gameObject;
+        if (states.Count > 0){
+            currentState = states[0];
+            currentState.Enter(owner);
+        }
     }
 
     void Update()
