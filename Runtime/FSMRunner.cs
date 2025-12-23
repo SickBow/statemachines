@@ -105,11 +105,12 @@ public class FSMRunner : MonoBehaviour
         InitConditionValuePairs();
         if (owner == null)
             owner = gameObject;
+            
+        InitStates();
         if (states.Count > 0){
             currentState = states[0];
             currentState.Enter(owner);
         }
-        InitStates();
     }
     void InitStates()
     {
@@ -151,4 +152,5 @@ public class FSMRunner : MonoBehaviour
     }
 }
 }
+
 
