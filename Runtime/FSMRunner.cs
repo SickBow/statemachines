@@ -109,8 +109,14 @@ public class FSMRunner : MonoBehaviour
             currentState = states[0];
             currentState.Enter(owner);
         }
+        InitStates();
     }
-
+    void InitStates()
+    {
+        foreach( var state in states) 
+            state.Init(owner);
+    }
+    
     void Update()
     {
         State nextState = _nextState = NextState();
@@ -145,3 +151,4 @@ public class FSMRunner : MonoBehaviour
     }
 }
 }
+
