@@ -16,7 +16,7 @@ public abstract class State : ScriptableObject
             tran.UpdateName();
         }
     }
-
+    public virtual void Init(GameObject owner){}
     public virtual void Enter(GameObject owner){}
     public virtual void Exit(GameObject owner){}
     public virtual void RunFixedUpdate(GameObject owner){}
@@ -28,3 +28,4 @@ public abstract class State : ScriptableObject
     }
 }
 }
+
